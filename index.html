@@ -390,9 +390,47 @@
     display:flex; flex-wrap:wrap; gap:10px 18px; margin-top:16px;
     color:var(--muted); font-size:14px; font-family:var(--mono);
   }
-  .blog-cover img{
-    width:100%; height:340px; object-fit:cover; border-radius:18px;
+  .blog-cover-visual{
+    width:100%; height:340px; border-radius:18px;
     border:1px solid var(--line);
+    overflow:hidden;
+    flex:none;
+  }
+  .blog-cover-visual img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  /* Prototype photo gallery */
+  .proto-gallery{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px;
+    margin-top:20px;
+  }
+  .proto-gallery-item{
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    position:relative;
+  }
+  .proto-gallery-item img{
+    width:100%; height:200px; object-fit:cover; display:block;
+    transition:transform .3s ease;
+  }
+  .proto-gallery-item:hover img{ transform:scale(1.04); }
+  .proto-gallery-item .caption{
+    position:absolute; bottom:0; left:0; right:0;
+    background:rgba(12,20,48,0.72);
+    color:#eef3f8;
+    font-family:var(--mono);
+    font-size:11.5px;
+    padding:8px 12px;
+  }
+  /* Hero real photo card */
+  .pillow-card img.pillow-photo{
+    width:100%; border-radius:14px;
+    border:1px solid var(--line);
+    object-fit:cover;
+    height:260px;
   }
   .blog-body{ padding:30px 38px 12px; }
   .blog-article{ display:grid; gap:26px; }
@@ -426,25 +464,6 @@
   .objective-list li::before{
     content:"•"; position:absolute; left:0; color:var(--cyan-deep); font-size:20px; line-height:1;
   }
-  .mini-table{
-    width:100%; border-collapse:collapse; margin-top:12px;
-    border:1px solid var(--line); border-radius:12px; overflow:hidden;
-  }
-  .mini-table th, .mini-table td{
-    border-bottom:1px solid var(--line); padding:10px 12px; text-align:left; font-size:14px; color:var(--muted);
-  }
-  .mini-table th{ background:var(--panel-alt); color:var(--navy-950); font-family:var(--display); }
-  .mini-table tr:last-child td{ border-bottom:none; }
-  .evidence-grid{
-    display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin-top:12px;
-  }
-  .evidence-grid img{
-    width:100%; height:170px; object-fit:cover; border-radius:14px; border:1px solid var(--line);
-    display:block;
-  }
-  .caption{
-    display:block; margin-top:8px; font-size:12.5px; color:var(--muted-dim); font-family:var(--mono);
-  }
 
   @media (max-width: 880px){
     nav.links{ display:none; }
@@ -456,7 +475,7 @@
     .score-row{ grid-template-columns:120px 1fr 40px; }
     .cta-final{ grid-template-columns:1fr; }
     .blog-cover{ grid-template-columns:1fr; }
-    .blog-grid, .evidence-grid{ grid-template-columns:1fr; }
+    .blog-grid{ grid-template-columns:1fr; }
     section{ padding:68px 0; }
     .strip .wrap{ justify-content:flex-start; gap:24px 40px; }
   }
@@ -480,6 +499,7 @@
       SOMNIA <span style="font-weight:400; color:var(--muted); margin-left:2px;">Tech</span>
     </div>
     <nav class="links">
+      <a href="#proyecto">Proyecto</a>
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#fases">Tus noches</a>
       <a href="#puntaje">Tu puntaje</a>
@@ -490,7 +510,124 @@
 
 <main>
 
-  <!-- HERO -->
+  <!-- ===================== PROYECTO / DOCUMENTACIÓN (PRIMERO) ===================== -->
+  <section class="blog-section" id="proyecto">
+    <div class="wrap">
+      <div class="blog-shell">
+        <div class="blog-cover">
+          <div>
+            <span class="blog-tag">Proyecto de investigación</span>
+            <h2>SOMNIA Tech</h2>
+            <p class="section-desc">Idea de negocio enfocada en mejorar la calidad del descanso mediante una almohada inteligente que identifica patrones de respiración, movimiento y sueño para apoyar a personas con hábitos de sueño irregulares o molestias asociadas a la higiene del descanso.</p>
+            <div class="blog-meta">
+              <span>Electrónica aplicada</span>
+              <span>Salud &amp; bienestar</span>
+            </div>
+          </div>
+          <!-- Foto real del prototipo -->
+          <div class="blog-cover-visual">
+            <img src="img/almohada-azul.jpg" alt="Prototipo SOMNIA Tech — almohada inteligente" loading="lazy">
+          </div>
+        </div>
+
+        <div class="blog-body">
+          <article class="blog-article">
+            <div class="blog-block">
+              <h3>Presentación de la idea de negocio</h3>
+              <p>La idea de negocio consiste en desarrollar una almohada inteligente que monitorea la calidad del sueño y entrega información útil para mejorar los hábitos de descanso. El producto propuesto es un dispositivo de electrónica aplicada al hogar, compuesto por sensores de presión, conectividad inalámbrica y análisis de señales relacionadas con la respiración y el movimiento corporal.</p>
+              <p>Responde a la necesidad de contar con una solución accesible, discreta y práctica para detectar problemas como la apnea, los despertares frecuentes o la falta de sueño profundo. Elegimos esta propuesta porque conecta tecnología, salud y bienestar, además de ofrecer un producto con alto valor para personas que buscan hábitos más saludables sin comprometer su confort.</p>
+            </div>
+
+            <div class="blog-block">
+              <h3>Planteamiento del problema</h3>
+              <p>Muchas personas no conocen realmente la calidad de su sueño ni las causas de su cansancio diario. La falta de descanso afecta la concentración, el rendimiento académico o laboral, el estado de ánimo y la salud general. El problema afecta principalmente a estudiantes, trabajadores, adultos mayores y personas con hábitos de sueño irregulares.</p>
+              <p>Es importante resolverlo porque un descanso adecuado favorece la salud física y mental. Identificar patrones de sueño de forma simple y temprana permite prevenir molestias y mejorar la calidad de vida.</p>
+            </div>
+
+            <div class="blog-block">
+              <h3>Pregunta problema</h3>
+              <p>¿Cómo puede una almohada inteligente detectar cambios en la respiración y el movimiento durante el sueño para ayudar a mejorar la calidad del descanso de una persona?</p>
+            </div>
+
+            <div class="blog-block">
+              <h3>Objetivos</h3>
+              <div class="blog-grid">
+                <div class="info-card">
+                  <h4>Objetivo general</h4>
+                  <p>Diseñar y evaluar una propuesta de producto tecnológica que ayude a monitorear la calidad del sueño y proporcione información útil para mejorar el descanso.</p>
+                </div>
+                <div class="info-card">
+                  <h4>Objetivos específicos</h4>
+                  <ul class="objective-list">
+                    <li>Identificar las necesidades de usuarios en relación con el sueño y los despertares frecuentes.</li>
+                    <li>Diseñar un prototipo funcional con sensores y componentes electrónicos básicos.</li>
+                    <li>Analizar la respiración y los movimientos durante el descanso para interpretar datos relevantes.</li>
+                    <li>Evaluar la viabilidad del producto y definir mejoras futuras.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-block">
+              <h3>Antecedentes y marco teórico</h3>
+              <p>Se han desarrollado dispositivos de salud y bienestar centrados en la monitorización del sueño, como pulseras inteligentes, sensores de movimiento y sistemas de análisis de respiración. Sin embargo, muchas soluciones se enfocan más en la recopilación de datos que en un análisis práctico y cómodo para el usuario.</p>
+              <p>Los temas teóricos que apoyan la propuesta incluyen ergonomía, electrónica aplicada, análisis de señales, salud del sueño y diseño de productos centrados en la experiencia del usuario. La información relevante para entender el negocio es la relación entre descanso, rendimiento y bienestar, así como la necesidad de soluciones accesibles y fáciles de usar.</p>
+            </div>
+
+            <div class="blog-block">
+              <h3>Desarrollo del prototipo</h3>
+              <div class="blog-grid">
+                <div class="info-card">
+                  <h4>Producto elaborado</h4>
+                  <p>Se desarrolló un prototipo de almohada con sensores de presión para detectar cambios de posición, patrones respiratorios y movimiento durante el sueño.</p>
+                </div>
+                <div class="info-card">
+                  <h4>Materiales utilizados</h4>
+                  <p>Almohada base, sensores de presión, microcontrolador, conexiones eléctricas, material para montaje y sistema de transmisión de datos.</p>
+                </div>
+                <div class="info-card">
+                  <h4>Procedimiento</h4>
+                  <p>Se identificaron zonas clave de la almohada, se integraron los sensores, se conectaron a la electrónica y se realizaron pruebas básicas para observar señales y cambios.</p>
+                </div>
+                <div class="info-card">
+                  <h4>Resultados</h4>
+                  <p>Se logró detectar variaciones en la presión y movimientos durante el descanso, lo que demuestra la viabilidad del concepto y la posibilidad de extender el análisis.</p>
+                </div>
+              </div>
+              <p style="margin-top:16px;">También se identificaron mejoras importantes, como optimizar la disposición de los sensores, mejorar la lectura de la respiración y reducir la sensibilidad a las variaciones de postura. Para quienes aún no han hecho pruebas, el plan es evaluar la reacción del prototipo bajo diferentes posiciones de descanso y comparar los datos obtenidos con la experiencia real del usuario.</p>
+
+              <!-- Galería de fotos del prototipo real -->
+              <div class="proto-gallery">
+                <div class="proto-gallery-item">
+                  <img src="img/almohada-azul.jpg" alt="Almohada SOMNIA — prototipo final" loading="lazy">
+                  <span class="caption">Prototipo v2.1 — funda exterior</span>
+                </div>
+                <div class="proto-gallery-item">
+                  <img src="img/prototipo-sensores-frente.jpg" alt="Sensores FSR integrados en la almohada" loading="lazy">
+                  <span class="caption">Matriz de sensores FSR — vista frontal</span>
+                </div>
+                <div class="proto-gallery-item">
+                  <img src="img/prototipo-sensores-top.jpg" alt="Vista superior del prototipo con circuito" loading="lazy">
+                  <span class="caption">Vista superior — sensores + placa ESP32</span>
+                </div>
+                <div class="proto-gallery-item">
+                  <img src="img/prototipo-azul-circuito.jpg" alt="Sistema completo: almohada y circuito electrónico" loading="lazy">
+                  <span class="caption">Sistema completo — Pneumatic Cushion Prototype v2.1</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-block">
+              <h3>Conclusión parcial</h3>
+              <p>Hasta el momento, hemos aprendido que la idea presenta una buena base técnica y una propuesta clara para resolver una necesidad real. Consideramos que es viable porque combina tecnología, comodidad y un problema cotidiano con impacto en la salud. Lo que falta por desarrollar es optimizar el prototipo, mejorar la precisión de los sensores y consolidar la interpretación de los datos para convertirlo en una solución más completa.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HERO ===================== -->
   <section class="hero">
     <div class="wrap">
       <div>
@@ -505,35 +642,7 @@
 
       <div class="hero-visual">
         <div class="pillow-card">
-          <svg class="pillow-shape" viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="pillowGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#eef3f8"/>
-                <stop offset="100%" stop-color="#e3ebf3"/>
-              </linearGradient>
-              <linearGradient id="waveGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#1fc9e6"/>
-                <stop offset="100%" stop-color="#1a86d6"/>
-              </linearGradient>
-            </defs>
-            <path d="M40 130 C40 70 100 45 210 45 C320 45 380 70 380 130 C380 190 320 215 210 215 C100 215 40 190 40 130 Z" fill="url(#pillowGrad)" stroke="rgba(15,26,61,0.14)" stroke-width="1.5"/>
-            <g fill="#1a86d6">
-              <circle cx="120" cy="95" r="4"><animate attributeName="opacity" values="1;0.35;1" dur="3.2s" repeatCount="indefinite"/></circle>
-              <circle cx="180" cy="80" r="4"><animate attributeName="opacity" values="0.4;1;0.4" dur="2.6s" repeatCount="indefinite"/></circle>
-              <circle cx="250" cy="82" r="4"><animate attributeName="opacity" values="1;0.4;1" dur="3.6s" repeatCount="indefinite"/></circle>
-              <circle cx="305" cy="100" r="4"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.9s" repeatCount="indefinite"/></circle>
-              <circle cx="150" cy="150" r="4"><animate attributeName="opacity" values="1;0.5;1" dur="3.1s" repeatCount="indefinite"/></circle>
-              <circle cx="270" cy="150" r="4"><animate attributeName="opacity" values="0.45;1;0.45" dur="2.7s" repeatCount="indefinite"/></circle>
-            </g>
-            <path d="M60 235 Q90 235 100 215 T140 235 Q160 250 170 215 T210 235 Q230 250 240 215 T280 235 Q300 250 310 215 T360 235" fill="none" stroke="url(#waveGrad)" stroke-width="2.6" stroke-linecap="round">
-              <animate attributeName="d"
-                values="
-                  M60 235 Q90 235 100 215 T140 235 Q160 250 170 215 T210 235 Q230 250 240 215 T280 235 Q300 250 310 215 T360 235;
-                  M60 235 Q90 235 100 222 T140 235 Q160 245 170 222 T210 235 Q230 245 240 222 T280 235 Q300 245 310 222 T360 235;
-                  M60 235 Q90 235 100 215 T140 235 Q160 250 170 215 T210 235 Q230 250 240 215 T280 235 Q300 250 310 215 T360 235"
-                dur="4.6s" repeatCount="indefinite"/>
-            </path>
-          </svg>
+          <img class="pillow-photo" src="img/prototipo-sensores-frente.jpg" alt="SOMNIA Tech — sensores integrados en la almohada" loading="lazy">
           <div class="breath-row">
             <span class="breath-label">RESP · en vivo</span>
             <span class="breath-value" id="liveRpm">14.0 rpm</span>
@@ -572,6 +681,9 @@
             <div class="sensor-dot-block"><span class="pt"></span><span>Centro der.</span></div>
             <div class="sensor-dot-block"><span class="pt"></span><span>Nuca izq.</span></div>
             <div class="sensor-dot-block"><span class="pt"></span><span>Nuca der.</span></div>
+          </div>
+          <div style="margin-top:18px; border-radius:14px; overflow:hidden; border:1px solid var(--line);">
+            <img src="img/prototipo-sensores-frente.jpg" alt="Sensores FSR integrados en la almohada SOMNIA" loading="lazy" style="width:100%; height:220px; object-fit:cover; display:block;">
           </div>
         </div>
 
@@ -692,105 +804,13 @@
     </div>
   </section>
 
-  <section class="blog-section">
-    <div class="wrap">
-      <div class="blog-shell">
-        <div class="blog-cover">
-          <div>
-            <span class="blog-tag"></span>
-            <h2>SOMNIA Tech</h2>
-            <p class="section-desc">Idea de negocio enfocada en mejorar la calidad del descanso mediante una almohada inteligente que identifica patrones de respiración, movimiento y sueño para apoyar a personas con hábitos de sueño irregulares o molestias asociadas a la higiene del descanso.</p>
-            <div class="blog-meta">
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-          <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="Almohada inteligente y descanso" />
-        </div>
-
-        <div class="blog-body">
-          <article class="blog-article">
-            <div class="blog-block">
-              <h3>1. Presentación de la idea de negocio</h3>
-              <p>La idea de negocio consiste en desarrollar una almohada inteligente que monitorea la calidad del sueño y entrega información útil para mejorar los hábitos de descanso. El producto propuesto es un dispositivo de electrónica aplicada al hogar, compuesto por sensores de presión, conectividad inalámbrica y análisis de señales relacionadas con la respiración y el movimiento corporal.</p>
-              <p>Responde a la necesidad de contar con una solución accesible, discreta y práctica para detectar problemas como la apnea, los despertares frecuentes o la falta de sueño profundo. Elegimos esta propuesta porque conecta tecnología, salud y bienestar, además de ofrecer un producto con alto valor para personas que buscan hábitos más saludables sin comprometer su confort.</p>
-            </div>
-
-            <div class="blog-block">
-              <h3>2. Planteamiento del problema</h3>
-              <p>Muchas personas no conocen realmente la calidad de su sueño ni las causas de su cansancio diario. La falta de descanso afecta la concentración, el rendimiento académico o laboral, el estado de ánimo y la salud general. El problema afecta principalmente a estudiantes, trabajadores, adultos mayores y personas con hábitos de sueño irregulares.</p>
-              <p>Es importante resolverlo porque un descanso adecuado favorece la salud física y mental. Identificar patrones de sueño de forma simple y temprana permite prevenir molestias y mejorar la calidad de vida.</p>
-            </div>
-
-            <div class="blog-block">
-              <h3>3. Pregunta problema</h3>
-              <p>¿Cómo puede una almohada inteligente detectar cambios en la respiración y el movimiento durante el sueño para ayudar a mejorar la calidad del descanso de una persona?</p>
-            </div>
-
-            <div class="blog-block">
-              <h3>4. Objetivos</h3>
-              <div class="blog-grid">
-                <div class="info-card">
-                  <h4>Objetivo general</h4>
-                  <p>Diseñar y evaluar una propuesta de producto tecnológica que ayude a monitorear la calidad del sueño y proporcione información útil para mejorar el descanso.</p>
-                </div>
-                <div class="info-card">
-                  <h4>Objetivos específicos</h4>
-                  <ul class="objective-list">
-                    <li>Identificar las necesidades de usuarios en relación con el sueño y los despertares frecuentes.</li>
-                    <li>Diseñar un prototipo funcional con sensores y componentes electrónicos básicos.</li>
-                    <li>Analizar la respiración y los movimientos durante el descanso para interpretar datos relevantes.</li>
-                    <li>Evaluar la viabilidad del producto y definir mejoras futuras.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="blog-block">
-              <h3>5. Antecedentes y marco teórico</h3>
-              <p>Se han desarrollado dispositivos de salud y bienestar centrados en la monitorización del sueño, como pulseras inteligentes, sensores de movimiento y sistemas de análisis de respiración. Sin embargo, muchas soluciones se enfocan más en la recopilación de datos que en un análisis práctico y cómodo para el usuario.</p>
-              <p>Los temas teóricos que apoyan la propuesta incluyen ergonomía, electrónica aplicada, análisis de señales, salud del sueño y diseño de productos centrados en la experiencia del usuario. La información relevante para entender el negocio es la relación entre descanso, rendimiento y bienestar, así como la necesidad de soluciones accesibles y fáciles de usar.</p>
-            </div>
-
-            <div class="blog-block">
-              <h3>6. Avances</h3>
-              <div class="blog-grid">
-                <div class="info-card">
-                  <h4>Producto elaborado</h4>
-                  <p>Se desarrolló un prototipo de almohada con sensores de presión para detectar cambios de posición, patrones respiratorios y movimiento durante el sueño.</p>
-                </div>
-                <div class="info-card">
-                  <h4>Materiales utilizados</h4>
-                  <p>Almohada base, sensores de presión, microcontrolador, conexiones eléctricas, material para montaje y sistema de transmisión de datos.</p>
-                </div>
-                <div class="info-card">
-                  <h4>Procedimiento</h4>
-                  <p>Se identificaron zonas clave de la almohada, se integraron los sensores, se conectaron a la electrónica y se realizaron pruebas básicas para observar señales y cambios.</p>
-                </div>
-                <div class="info-card">
-                  <h4>Resultados</h4>
-                  <p>Se logró detectar variaciones en la presión y movimientos durante el descanso, lo que demuestra la viabilidad del concepto y la posibilidad de extender el análisis.</p>
-                </div>
-              </div>
-              <p style="margin-top:16px;">También se identificaron mejoras importantes, como optimizar la disposición de los sensores, mejorar la lectura de la respiración y reducir la sensibilidad a las variaciones de postura. Para quienes aún no han hecho pruebas, el plan es evaluar la reacción del prototipo bajo diferentes posiciones de descanso y comparar los datos obtenidos con la experiencia real del usuario.</p>
-            </div>
-
-            <div class="blog-block">
-              <h3>7. Conclusión parcial</h3>
-              <p>Hasta el momento, hemos aprendido que la idea presenta una buena base técnica y una propuesta clara para resolver una necesidad real. Consideramos que es viable porque combina tecnología, comodidad y un problema cotidiano con impacto en la salud. Lo que falta por desarrollar es optimizar el prototipo, mejorar la precisión de los sensores y consolidar la interpretación de los datos para convertirlo en una solución más completa.</p>
-            </div>
-
-            <div class="blog-block">
-             
-             
-
   <!-- CTA FINAL -->
   <section>
     <div class="wrap">
       <div class="cta-final" id="lista">
         <div>
           <h2 style="margin-bottom:14px;">Sé de los primeros en dormir con SOMNIA</h2>
-          <p class="section-desc">Estamos terminando el primer lote. Déjanos tu correo y te avisamos apenas abramos reservas — sin spam, un solo correo cuando haya novedades reales.</p>
+          <p class="section-desc">Dejanos tu correo y te contactaremos para mas informacion.</p>
         </div>
         <form class="waitlist-form" onsubmit="return handleWaitlist(event)">
           <div class="field-row">
@@ -822,6 +842,7 @@
     <div class="footer-row">
       <span>© 2026 SOMNIA Tech</span>
       <div class="footer-links">
+        <a href="#proyecto">Proyecto</a>
         <a href="#como-funciona">Cómo funciona</a>
         <a href="#fases">Tus noches</a>
         <a href="#puntaje">Tu puntaje</a>
